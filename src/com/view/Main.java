@@ -8,10 +8,13 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
-public class Test {
+public class Main {
     public static void main(String[] args) {
+        System.out.println("adding the products..........");
         addBtn();
+        System.out.println("all products list");
         getAll();
+        System.out.println("deleting the product..........");
         deleteBtn();
     }
 
@@ -27,7 +30,8 @@ public class Test {
            ProductService productService= new ProductServiceImpl();
            System.out.println("Enter id:");
            product.setId(scanner.nextInt());
-           product.setName("Mobile");
+           System.out.println("Enter name of product:");
+           product.setName(scanner.nextLine());
            product.setCompany("abc");
            product.setMfd(LocalDate.now());
            product.setExpDate(LocalDate.now().plusYears(5));
@@ -42,13 +46,15 @@ public class Test {
    static void getAll(){
         ProductService productService = new ProductServiceImpl();
        List<Product> productList = productService.getAllProducts();
-       System.out.println(productList);
+         productList.forEach(System.out::println);
     }
 
 
     static  void deleteBtn(){
+        Scanner scanner = new Scanner(System.in);
         ProductService productService= new ProductServiceImpl();
-        productService.deleteProduct(0);
+        System.out.println("which id to delete from the db?");
+        productService.deleteProduct(scanner.nextInt());
         getAll();//get all product after deletion
     }
 }

@@ -71,4 +71,16 @@ public class Product {
                 ", expDate=" + expDate +
                 '}';
     }
+
+    public Product(int id, String name, String company, int price, LocalDate mfd, LocalDate expDate) {
+        this.id = id;
+        this.name = name;
+        this.company = company;
+        this.price = price;
+        this.mfd = mfd;
+        this.expDate = expDate;
+    }
+
+    public Product() {
+    }
 }
